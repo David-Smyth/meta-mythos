@@ -1,0 +1,97 @@
+This README file contains information on the contents of the
+mythos layer.
+
+
+MythOS is the real-time embedded Linux distribution for Aeon
+class spacecraft. Derived from Poky, MythOS provides a rich
+Linux environment with networking and Ruby on Rails. The target
+processors include the Freescale PPC Systems on a Chip (SOC)
+models p1010 and p2020. The p1010 is used only for some development
+testing in late 2013 and early 2014. Thereafter, MythOS will target
+the QEMU PPC, the p2020 SOC, and the RAD750.
+
+Please see the corresponding sections below for details.
+
+
+Dependencies
+============
+
+This layer depends on:
+
+  URI: git://git.openembedded.org/bitbake
+  branch: master
+
+  URI: git://git.openembedded.org/openembedded-core
+  layers: meta
+  branch: master
+
+  URI: git://git.yoctoproject.org/poky
+  layers: meta-poky
+  branch: master
+
+  URI: git://git.yoctoproject.org/meta-fsl-ppc
+  layers: meta-fsl-ppc
+  branch: master
+
+
+And once I figure out exactly how to integrate
+with this build, this will also depend upon
+Rails, Ruby, and other tools including a
+lightweight web server and a database engine.
+
+  URI: git://git.yoctoproject.org/poky
+  layers: meta-poky
+  branch: master
+
+
+Patches
+=======
+
+Please submit any patches against the mythos layer to the
+xxxx mailing list (xxxx@zzzz.org) and cc: the maintainer:
+
+Maintainer: David Smyth <David.Smyth@Millennium-Space.com>
+
+
+Table of Contents
+=================
+
+  I. Adding the mythos layer to your build
+ II. Misc
+
+
+I. Adding the mythos layer to your build
+=================================================
+
+In order to use this layer, you need to make the build system aware of
+it.
+
+Assuming the mythos layer exists at the top-level of your
+yocto build tree, you can add it to the build system by adding the
+location of the mythos layer to bblayers.conf, along with any
+other layers needed. e.g., for the p1010, p2020 (and probably the
+RAD750) builds:
+
+  BBLAYERS ?= " \
+    /path/to/yocto/meta \
+    /path/to/yocto/meta-yocto \
+    /path/to/yocto/meta-yocto-bsp \
+    /path/to/yocto/meta-mythos \
+    /path/to/yocto/meta-fsl-ppc \
+    /path/to/yocto/meta-oe/meta-oe \
+    /path/to/yocto/meta-oe/meta-ruby \
+    /path/to/yocto/meta-oe/meta-webserver \
+    /path/to/yocto/meta-qt3 \
+    "
+
+
+In addition, in your local.conf you will need to specify the distro to
+be mythos, and you will need to specify an appropriate machine, such as:
+
+  MACHINE = "p2020rdb"
+  DISTRO = "mythos"
+
+II. Misc
+========
+
+--- replace with specific information about the mythos layer ---
